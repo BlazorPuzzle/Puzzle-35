@@ -1,0 +1,47 @@
+﻿@page "/"
+@inject IJSRuntime jSRuntime
+
+<PageTitle>Home</PageTitle>
+
+<h1>Encrypt This!</h1>
+
+<p>
+    This is a Global Server Blazor Web App that writes a string to local storage.
+</p>
+
+<p>
+    The string is saved on the client and sent down in clear text.
+</p>
+
+<p>
+    How can we encrypt the string to protect it from prying eyes?
+</p>
+
+Credit Card #: <input  @bind="@Data" />
+<br />
+<br />
+
+<button @onclick="SaveData">Save</button>
+<button @onclick="LoadData">Load</button>
+<br />
+<br />
+<p>@Message</p>
+
+@code {
+    
+    string Message = string.Empty;
+    string Data = "555-6666-7777-8888";
+    string Key = "myKey";
+
+    // Check App.razor for the JavaScript methods
+
+    async Task SaveData()
+    {
+        await jSRuntime.InvokeVoidAsync("SaveToLocalStorage", Key, Data);
+    }
+
+    async Task LoadData()
+    {
+        Data = await jSRuntime.InvokeAsync<string>("GetFromLocalStorage", Key);
+    }
+}
