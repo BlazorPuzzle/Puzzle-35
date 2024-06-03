@@ -2,7 +2,7 @@
 
 ## Encrypt This!
 
-YouTube Video: https://youtu.be/
+YouTube Video: https://youtu.be/LtBlbjcrIFI
 
 Blazor Puzzle Home Page: https://blazorpuzzle.com
 
